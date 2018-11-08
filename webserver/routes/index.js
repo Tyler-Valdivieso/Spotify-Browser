@@ -53,6 +53,10 @@ function makeAPIRequest(spotify_endpoint, res) {
 		'Content-Type':'application/x-www-form-urlencoded',
 		'Authorization': 'Bearer ' + access_token
 	};
+	fetch(spotify_endpoint, {
+		method:'GET',
+		headers: headers,
+	}).then(response => res.json());
 
 	//TODO: use fetch() to make the API call.
 	//parse the response send it back to the Angular client with res.json()
@@ -101,6 +105,12 @@ router.get('/callback', function(req, res, next) {
 		'Content-Type':'application/x-www-form-urlencoded',
 		'Authorization': 'Basic ' + Buffer.from(my_client_id + ':' + my_client_secret).toString('base64')
 	};
+	fetch('https://accounts.spotify.com/api/token', {
+		method:'POST',
+		headers: headers,
+		body: params
+		}).then(response => response.json()).then(function(data){access_token=data.access_token}).then(writeTokenFile(function(){res.redirect(client_uri)})); 
+		// parse to what and use how? set access token here with fetch?
 	//(fetch(content with param in body).then(writeTokenFile).then(res.redirect))
 	//TODO: use fetch() to exchange the code for an access token and refresh token.
 	//When the fetch() promise completes, parse the response.
