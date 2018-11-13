@@ -1,12 +1,12 @@
---Readme document for *author(s)*, *email(s)*, *UCI id(s)*--
+--Readme document for Tyler Valdivieso & Kaitlyn Fong, Tyler: valdivit@uci.edu Kaitlyn: , Tyler: 37872499 Kaitlyn: --
 
 1. How long, in hours, did it take you to complete this assignment?
 
-
+18...so far
 
 2. What online resources did you consult when completing this assignment? (list specific URLs)
 
-
+- https://stackoverflow.com/questions/32956443/invalid-redirect-uri-on-spotify-auth
 
 3. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
 

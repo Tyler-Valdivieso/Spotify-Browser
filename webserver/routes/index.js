@@ -6,7 +6,7 @@ var fs = require('fs');
 
 var loadedFiles = false;
 
-const redirect_uri = 'http://localhost:8888/callback';
+const redirect_uri = 'http://localhost:8888/callback/';
 const client_uri = 'http://localhost:4200';
 const spotify_base_uri = 'https://api.spotify.com/v1';
 
@@ -53,6 +53,10 @@ function makeAPIRequest(spotify_endpoint, res) {
 		'Content-Type':'application/x-www-form-urlencoded',
 		'Authorization': 'Bearer ' + access_token
 	};
+	fetch(spotify_endpoint, {
+		method:'GET',
+		headers: headers,
+	}).then(response => response.json()).then(function(data){res.json(data)});
 
 	//TODO: use fetch() to make the API call.
 	//parse the response send it back to the Angular client with res.json()
@@ -75,8 +79,15 @@ router.get('*', function(req, res, next) {
 	}
 });
 
+
 router.get('/login', function(req, res, next) {
 	var scopes = 'user-read-private user-read-email';
+	res.redirect('https://accounts.spotify.com/authorize' + 
+	'?response_type=code' + 
+	'&client_id=' + my_client_id +
+	(scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
+	'&redirect_uri=' + encodeURIComponent(redirect_uri));
+
 
 	//TODO: use res.redirect() to send the user to Spotify's authentication page.
 	//Use encodeURIComponent() to make escape necessary characters.
@@ -94,7 +105,13 @@ router.get('/callback', function(req, res, next) {
 		'Content-Type':'application/x-www-form-urlencoded',
 		'Authorization': 'Basic ' + Buffer.from(my_client_id + ':' + my_client_secret).toString('base64')
 	};
-
+	fetch('https://accounts.spotify.com/api/token', {
+		method:'POST',
+		headers: headers,
+		body: params
+		}).then(response => response.json()).then(function(data){access_token = data.access_token}).then(writeTokenFile(function(){res.redirect(client_uri)})); 
+		// parse to what and use how? set access token here with fetch?
+	//(fetch(content with param in body).then(writeTokenFile).then(res.redirect))
 	//TODO: use fetch() to exchange the code for an access token and refresh token.
 	//When the fetch() promise completes, parse the response.
 	//Then, use writeTokenFile() to write the token file. Pass it a callback function for what should occur once the file is written.
