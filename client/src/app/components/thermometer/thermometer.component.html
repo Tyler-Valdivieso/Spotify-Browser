@@ -1,4 +1,44 @@
-<div class="progress">
-	<!--TODO: set style.background-color based on the audio feature's color and width via the audio feature's percent. Display feature name and percent.-->
+<!-- <div class="progress">
+	TODO: set style.background-color based on the audio feature's color and width via the audio feature's percent. Display feature name and percent.
   <div class="progress-bar" role="progressbar">???: ???</div>
+</div> -->
+<h1>{{featureTypes.featureToPercent[danceability]}}</h1>
+
+<div class="progress">
+  <div class="progress-bar" role="progressbar"  style="width: '{{featureTypes.featureToPercent.danceability}}'" >danceability: {{featureTypes.featureToPercent[danceability]}}</div>
 </div>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: '{{featureTypes.featureToPercent[energy]}}'">energy: {{featureTypes.featureToPercent[energy]}}</div>
+</div>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: '{{featureTypes.featureToPercent[speechiness]}}'">speechiness: {{featureTypes.featureToPercent[speechiness]}}</div>
+</div>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: '{{featureTypes.featureToPercent[acousticness]}}'">acousticness: {{featureTypes.featureToPercent[acousticness]}}</div>
+</div>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: '{{featureTypes.featureToPercent[instrumentalness]}}'">instrumentalness: {{featureTypes.featureToPercent[instrumentalness]}}</div>
+</div>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: '{{featureTypes.featureToPercent[liveness]}}';">liveness: {{featureTypes.featureToPercent[liveness]}}</div>
+</div>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: '{{featureTypes.featureToPercent[valence]}}';">valence: {{featureTypes.featureToPercent[valence]}}</div>
+</div>
+
+
+<!-- <div class="progress">
+  <div class="progress-bar" style="width:10%"></div>
+</div>
+<div class="progress">
+  <div class="progress-bar bg-success" style="width:20%"></div>
+</div>
+<div class="progress">
+  <div class="progress-bar bg-info" style="width:30%"></div>
+</div>
+<div class="progress">
+   <div class="progress-bar bg-warning" style="width:40%"></div>
+</div>
+<div class="progress">
+  <div class="progress-bar bg-danger" style="width:50%"></div>
+</div> -->
