@@ -16,7 +16,7 @@ export class TrackFeatures {
 	color(featureKey:string) {
 		//TODO: use chroma library to mix two colors according to the percent value for the feature.
 		//Use the featureToPercent dictionary to look up the percent value for the feature.
-		return '#ffffff';
+		return '#ffffff'; //how to add to the featuretypes? 
 	}
 
 	percent(feature:string) {
